@@ -1,0 +1,30 @@
+.container{
+  width: 500px;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e990f9;
+  border-radius: 44px;
+}
+
+.logo{
+  margin-left: 37px;
+}
+
+.button{
+  margin-top: 55px;
+  width: 150px;
+  height: 60px;
+  padding: 20px 34px 19px;
+  border-radius: 36px;
+  border: solid 3px #fff;
+  background-color: transparent;
+  font-size: 18px;
+  color: #fff;
+}
+
+.contentContainer{
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,29 @@
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.infoContainer{
+  display: flex;
+  flex-direction: column;
+  margin-left: 45px;
+  font-size: 14px;
+  color: #6C6C6C;
+  
+}
+
+.date{
+  color: #747474;
+  margin-bottom: 9px;
+}
+
+.info{
+  margin-top: 12px
+}
+
+.infoDescription{
+  color:#000;
+  font-weight: bold;
+  margin-right: 5px;
+}
