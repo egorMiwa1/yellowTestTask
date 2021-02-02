@@ -1,9 +1,23 @@
 import React from 'react';
+import styles from './infoStyles.module.css';
 
 const InfoPage = () => {
   return (
-    <div>
-      
+    <div className={styles.container}>
+      <h2 className={styles.title}>INFO</h2>
+      <div style={{ marginTop: 15 }} className={styles.contentBlock}>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+        It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+        and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </div>
+      <div style={{ marginTop: 30 }} className={styles.contentBlock}>
+        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+        The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
+        as opposed to using 'Content here, content here', making it look like readable English.
+      </div>
     </div>
   );
 }

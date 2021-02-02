@@ -4,8 +4,46 @@
   background-color: #7ed321;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .logo{
   margin-left: 37px;
+}
+
+.navbar{
+  display: flex;
+  align-items: center;
+  margin-right: 35px;
+}
+
+.menuItem{
+  font-size: 14px;
+  color: #fff;
+}
+
+.filterIcon{
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 55px;
+}
+
+.activeLink{
+  border-bottom: solid 2px #fff;
+}
+
+.burgerMenuContainer{
+  width: 28px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.strip{
+  width: 100%;
+  height: 5px;
+  background-color: #fff;
 }

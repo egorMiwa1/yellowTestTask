@@ -1,37 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import JogCard from '../components/JogCard/JogCard'
-
-const data = [
-  {
-    date: '20.12.2017',
-    speed: 15,
-    distance: 10,
-    time: 60
-  },
-  {
-    date: '20.12.2017',
-    speed: 15,
-    distance: 10,
-    time: 60
-  },
-  {
-    date: '20.12.2017',
-    speed: 15,
-    distance: 10,
-    time: 60
-  }
-]
+import { useDispatch, useSelector } from 'react-redux'
+import { syncData } from '../redux/actions/jogsActions'
+import DateFilter from '../components/DateFilter/DateFilter'
+import AddJogForm from '../components/AddJogForm/AddJogForm'
 
 const JogsPage = () => {
+  const dispatch = useDispatch();
+  const isLogged = useSelector(state => state.user.isLogged)
+  const jogs = useSelector((state) => state.jogs.filteredJogList);
+  const isFilterOpen = useSelector(state => state.jogs.isFilterOpen);
+
+  useEffect(() => {
+    if (isLogged) dispatch(syncData())
+  }, [isLogged])
+
   return (
     <div >
-      {data.map((item, index) => {
+      {isFilterOpen ? <DateFilter /> : null}
+      {jogs.map((item, index) => {
         return (<JogCard
           style={index > 0 ? { marginTop: 80 } : null}
-          date={item.date}
-          speed={item.speed}
-          distance={item.distance}
-          time={item.time}
+          jog={item}
         />)
       })}
     </div>

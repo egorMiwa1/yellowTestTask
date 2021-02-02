@@ -1,38 +1,36 @@
-import { GET_TASKS, UPDATE_TASK, DELETE_TASK, ADD_TASK, ADD_TASKS } from '../actions/jogsActions'
+import { TOGGLE_FILTER, ADD_JOGS, FILTER_BY_DATE, ADD_JOG } from '../actions/jogsActions'
 
 let initialState = {
-  tasks: [],
+  jogsList: [],
+  filteredJogList: [],
+  isFilterOpen: false,
   loading: false,
-  totalCount:21
 };
 
-export const tasksReducer = (state = initialState, action) => {
+export const jogsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_TASKS:
+    case ADD_JOGS:
       return {
         ...state,
-        tasks: [...action.payload.tasks]
+        jogsList: [...action.payload],
+        filteredJogList: [...action.payload]
       }
-    case ADD_TASK:
+    case ADD_JOG:
       return {
         ...state,
-        tasks: state.tasks.concat(action.payload)
+        jogsList: [...state.jogsList, ...action.payload],
+        filteredJogList: [...state.jogsList, ...action.payload]
       }
-      case ADD_TASKS:
-        return {
-          ...state,
-          tasks: action.payload.message.tasks,
-          totalCoun: action.payload.message.total_task_count
-        }
-    case UPDATE_TASK:
+    case TOGGLE_FILTER:
       return {
         ...state,
-        tasks: state.tasks.map((task, i) => task.id === action.payload.id ? { ...action.payload } : { ...task })
+        isFilterOpen: !state.isFilterOpen,
+        filteredJogList: [...state.jogsList]
       }
-    case DELETE_TASK:
+    case FILTER_BY_DATE:
       return {
         ...state,
-        tasks: state.tasks.filter((task) => task.id !== action.payload.id)
+        filteredJogList: state.jogsList.filter((jog) => jog.date >= action.payload.startDate && jog.date <= action.payload.endDate)
       }
     default:
       return state;

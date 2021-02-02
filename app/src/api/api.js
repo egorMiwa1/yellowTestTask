@@ -1,20 +1,46 @@
 import Axios from 'axios'
+export let apiURL = "https://jogtracker.herokuapp.com/api/v1";
 
-export let apiURL = "https://uxcandy.com/~shapoval/test-task-backend/v2";
-const developer = "developer=Egor";
+export const setTokenForAPI = (token) => {
+  instance.defaults.headers.Authorization = "Bearer " + token;
+};
 
 const instance = Axios.create({
   baseURL: `${apiURL}`,
   headers: {
-      "Content-Type": "application/json",
+    "Content-Type": "application/json",
   },
 });
 
 export const api = {
-  getTasks(page){
+  login(uuid) {
     return instance
-    .get(`${apiURL}/?page=${page}&${developer}`)
-    .then((response) => response)
-    .catch((err) => console.log(err));
+      .post(`${apiURL}/auth/uuidLogin`, {
+        uuid,
+      })
+      .then((response) => {
+        return response;
+      })
+      .catch((err) => console.log(err.response));
+  },
+  syncData() {
+    return instance
+      .get(`${apiURL}/data/sync`)
+      .then((response) => {
+        return response;
+      })
+      .catch((err) => console.log(err));
+  },
+  addJog(date, time, distance) {
+    return instance
+      .post(`${apiURL}/data/jog`, {
+        distance,
+        date,
+        time
+      })
+      .then((response) => {
+        return response;
+      })
+      .catch((err) => console.log(err.response));
   }
 }

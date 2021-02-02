@@ -1,0 +1,53 @@
+.formContainer{
+  width: 500px;
+  height: 380px;
+  background-color: #7ed321;
+  border-radius: 45px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.inputContainer{
+  display: flex;
+  align-items: center;
+}
+
+.inputLabel{
+  font-size: 16px;
+  width: 75px;
+  text-transform: capitalize;
+}
+
+.input{
+  width: 235px;
+  height: 30px;
+  border: solid 1px #979797;
+  background-color: #fff;
+  margin-left: 15px;
+  border-radius: 10px;
+}
+
+.closeIcon{
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  font-size: 27px;
+}
+
+.fieldsContainer{
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px
+}
+
+.saveButton{
+  border-radius: 25px;
+  border: solid 2px #fff;
+  width: 320px;
+  height: 42px;
+  color: #fff;
+  margin-top: 45px;
+  text-transform: capitalize;
+}

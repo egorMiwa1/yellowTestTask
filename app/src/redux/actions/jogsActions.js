@@ -1,52 +1,51 @@
-import {api} from '../../api/api'
+import { api } from '../../api/api'
 
-export const GET_TASKS = "GET_TASKS"
-export const ADD_TASK = "ADD_TASK"
-export const ADD_TASKS = "ADD_TASKS"
-export const DELETE_TASK = "DELETE_TASK"
-export const UPDATE_TASK = "UPDATE_TASK"
+export const SYNC_DATA = "GET_TASKS"
+export const ADD_JOGS = "ADD_JOGS"
+export const ADD_JOG = "ADD_JOG"
+export const TOGGLE_FILTER = "TOGGLE_FILTER"
+export const FILTER_BY_DATE = "FILTER_BY_DATE"
+export const CLOSE_FILTER = "CLOSE_FILTER"
 
-// export function getTasks() {
-//   return {
-//     type : GET_TASKS
-//   }
-// }
-
-export const getTasks = (pageNumber) => async (dispatch) => {
-  let response = await api.getTasks(pageNumber);
+export const syncData = () => async (dispatch) => {
+  let response = await api.syncData();
   if (response && response.status === 200) {
-    dispatch(addTasks(response.data));
+    dispatch(addJogs(response.data.response.jogs));
   } else {
     console.log("Bad request");
   }
 };
 
-export function addTasks(data) {
+export function addJogs(jogs) {
   return {
-    type : ADD_TASKS,
-    payload : data
+    type: ADD_JOGS,
+    payload: jogs
   }
 }
 
-
-export function addTask(data) {
+export function filterByDate(startDate, endDate) {
   return {
-    type : ADD_TASK,
-    payload : data
+    type: FILTER_BY_DATE,
+    payload: { startDate, endDate }
   }
 }
 
-export function deleteTask(id) {
-  return {
-    type : DELETE_TASK,
-    payload: id
+export const addJog = (jog) => async (dispatch) => {
+  let response = await api.addJog(jog.date,jog.time,jog.distance);
+  if (response && response.status === 201) {
+    console.log(response)
+    return {
+      type:ADD_JOG,
+      payload:response.data
+    }
+  } else {
+    console.log("Bad request");
   }
-}
+};  
 
-export function updateTask(data) {
+export function toggleFilter() {
   return {
-    type :UPDATE_TASK,
-    payload:data
+    type: TOGGLE_FILTER
   }
 }
 
